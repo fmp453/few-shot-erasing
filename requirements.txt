@@ -1,0 +1,7 @@
+diffusers==0.21.4
+transformers==4.34.0
+Pillow==10.0.1
+tqdm==4.66.1
+pandas
+matplotlib
+accelerate
