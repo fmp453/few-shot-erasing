@@ -23,7 +23,7 @@ python load_save.py --pipeline runwayml/stable-diffusion-v1-5 --save_dir models/
 ```
 
 ## Training (Updating parameters for erasing)
-Store the prepared images in a directory. Supported `.png`, `jpg`, and
+Store the prepared images in a directory. Supported `.png`, `jpg`, and `.jpeg`
 
 ```
 .
@@ -35,7 +35,7 @@ Store the prepared images in a directory. Supported `.png`, `jpg`, and
         └── church-04.jpeg
 ```
 
-Run following command for training.
+Run following command for training (erasing).
 
 ```bash
 python train.py --concept "Eiffel Tower" --concept_type object --save eiffel-tower --data ds/church --local --text_encoder_path models/sd-15/text_encoder --diffusion_path models/sd-15 --epochs 4
