@@ -2,6 +2,9 @@
 
 This repository contains the implementation of [Erasing Concepts from Text-to-Image Diffusion Models with Few-shot Unlearning](https://arxiv.org/abs/2405.07288).
 
+## News
+- Our paper has been accepted by BMVC2024 ([accepted papers list](https://bmvc2024.org/programme/accepted_papers/))
+
 ## Installation
 The environments of our experiments are based on [PyTorch1.13.1 (docker image)](https://hub.docker.com/layers/pytorch/pytorch/1.13.1-cuda11.6-cudnn8-runtime/images/sha256-1e26efd426b0fecbfe7cf3d3ae5003fada6ac5a76eddc1e042857f5d049605ee)
 
