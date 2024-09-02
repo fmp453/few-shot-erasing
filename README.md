@@ -78,13 +78,13 @@ Erased models are stored like below.
 inference (PNDM Scheduler and 100 inference steps) 
 
 ```bash
-python infer.py "a photo of Eiffel Tower." eiffel-tower/epoch-03 --tokenizer_path models/sd-14/tokenizer --unet_path models/sd-14/unet --vae_path models/sd-14/vae
+python infer.py "a photo of Eiffel Tower." eiffel-tower/epoch-3 --tokenizer_path models/sd-14/tokenizer --unet_path models/sd-14/unet --vae_path models/sd-14/vae
 ```
 
 or 
 
 ```bash
-python infer.py "a photo of Eiffel Tower." eiffel-tower/epoch-03 --model_name CompVis/stable-diffusion-v1-4
+python infer.py "a photo of Eiffel Tower." eiffel-tower/epoch-3 --model_name CompVis/stable-diffusion-v1-4
 ```
 
 this command use the Stable Diffusion 1.4 except the text encoder.
