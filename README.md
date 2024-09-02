@@ -2,7 +2,11 @@
 
 This repository contains the implementation of [Erasing Concepts from Text-to-Image Diffusion Models with Few-shot Unlearning](https://arxiv.org/abs/2405.07288).
 
+> [!NOTE]  
+> We used stable diffusion 1.5. in our experiments, but it has been deleted from huggingface (as of September 2, 2024).
+
 ## News
+- Camera-ready version is released on arXiv
 - Our paper has been accepted by BMVC2024 ([accepted papers list](https://bmvc2024.org/programme/accepted_papers/))
 
 ## Installation
@@ -25,6 +29,11 @@ Save the stable diffusion 1.5 pipeline (text encoder, tokenizer, scheduler, VAE,
 python load_save.py --pipeline runwayml/stable-diffusion-v1-5 --save_dir models/sd-15
 ```
 
+in case stable diffusion 1.4
+```bash
+python load_save.py --pipeline CompVis/stable-diffusion-v1-4 --save_dir models/sd-14
+```
+
 ## Training (Updating parameters for erasing)
 Store the prepared images in a directory. Supported `.png`, `jpg`, and `.jpeg`
 
@@ -41,7 +50,7 @@ Store the prepared images in a directory. Supported `.png`, `jpg`, and `.jpeg`
 Run following command for training (erasing).
 
 ```bash
-python train.py --concept "Eiffel Tower" --concept_type object --save eiffel-tower --data ds/church --local --text_encoder_path models/sd-15/text_encoder --diffusion_path models/sd-15 --epochs 4
+python train.py --concept "Eiffel Tower" --concept_type object --save eiffel-tower --data ds/church --local --text_encoder_path models/sd-14/text_encoder --diffusion_path models/sd-14 --epochs 4
 ```
 
 Erased models are stored like below.
@@ -69,13 +78,13 @@ Erased models are stored like below.
 inference (PNDM Scheduler and 100 inference steps) 
 
 ```bash
-python infer.py "a photo of Eiffel Tower." eiffel-tower/epoch-03 --tokenizer_path models/sd-15/tokenizer --unet_path models/sd-15/unet --vae_path models/sd-15/vae
+python infer.py "a photo of Eiffel Tower." eiffel-tower/epoch-03 --tokenizer_path models/sd-14/tokenizer --unet_path models/sd-14/unet --vae_path models/sd-14/vae
 ```
 
 or 
 
 ```bash
-python infer.py "a photo of Eiffel Tower." eiffel-tower/epoch-03 --model_name runwayml/stable-diffusion-v1-5
+python infer.py "a photo of Eiffel Tower." eiffel-tower/epoch-03 --model_name CompVis/stable-diffusion-v1-4
 ```
 
 this command use the Stable Diffusion 1.5 except the text encoder.
@@ -97,7 +106,7 @@ The preprint can be cited as follows
 ## Acknowledgement
 This implementation is based on [Textual Inversion using diffusers](https://github.com/huggingface/diffusers/blob/main/examples/textual_inversion/textual_inversion.py). 
 
-Baselines are
+Baselines are as follows:
 - https://github.com/rohitgandikota/erasing
 - https://github.com/Con6924/SPM
 - https://github.com/rohitgandikota/unified-concept-editing/tree/main
