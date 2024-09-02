@@ -87,7 +87,7 @@ or
 python infer.py "a photo of Eiffel Tower." eiffel-tower/epoch-03 --model_name CompVis/stable-diffusion-v1-4
 ```
 
-this command use the Stable Diffusion 1.5 except the text encoder.
+this command use the Stable Diffusion 1.4 except the text encoder.
 
 # Citation
 The preprint can be cited as follows
