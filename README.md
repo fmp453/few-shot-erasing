@@ -103,6 +103,17 @@ The preprint can be cited as follows
 }
 ```
 
+or
+
+```
+@InProceedings{fuchi2024erasing,
+    title={Erasing Concepts from Text-to-Image Diffusion Models with Few-shot Unlearning}, 
+    author={Masane Fuchi and Tomohiro Takagi},
+    year = {2024},
+    booktitle = {Proceedings of the 35th British Machine Vision Conference (BMVC))},
+    month = {November},
+}
+```
 ## Acknowledgement
 This implementation is based on [Textual Inversion using diffusers](https://github.com/huggingface/diffusers/blob/main/examples/textual_inversion/textual_inversion.py). 
 
