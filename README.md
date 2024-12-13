@@ -6,6 +6,7 @@ This repository contains the implementation of [Erasing Concepts from Text-to-Im
 > We used stable diffusion 1.5. in our experiments, but it has been deleted from huggingface (as of September 2, 2024).
 
 ## News
+- Proceedings of BMVC is available ([link](https://bmvc2024.org/proceedings/216/))
 - Camera-ready version is released on arXiv
 - Our paper has been accepted by BMVC2024 ([accepted papers list](https://bmvc2024.org/programme/accepted_papers/))
 
@@ -106,12 +107,13 @@ The preprint can be cited as follows
 or
 
 ```
-@InProceedings{fuchi2024erasing,
-    title={Erasing Concepts from Text-to-Image Diffusion Models with Few-shot Unlearning}, 
-    author={Masane Fuchi and Tomohiro Takagi},
-    year = {2024},
-    booktitle = {Proceedings of the 35th British Machine Vision Conference (BMVC))},
-    month = {November},
+@inproceedings{Fuchi_2024_BMVC,
+    author    = {Masane Fuchi and Tomohiro Takagi},
+    title     = {Erasing Concepts from Text-to-Image Diffusion Models with Few-shot Unlearning},
+    booktitle = {35th British Machine Vision Conference 2024, {BMVC} 2024, Glasgow, UK, November 25-28, 2024},
+    publisher = {BMVA},
+    year      = {2024},
+    url       = {https://papers.bmvc2024.org/0216.pdf}
 }
 ```
 ## Acknowledgement
