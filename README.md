@@ -91,7 +91,7 @@ python infer.py "a photo of Eiffel Tower." eiffel-tower/epoch-3 --model_name Com
 this command use the Stable Diffusion 1.4 except the text encoder.
 
 # Citation
-The preprint can be cited as follows
+Our paper can be cited as follows
 
 ```
 @misc{fuchi2024erasing,
