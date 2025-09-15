@@ -1,4 +1,4 @@
-# Erasing Concepts from Text-to-Image Diffusion Models with Few-shot Unlearning
+# Erasing Concepts from Text-to-Image Diffusion Models with Few-shot Unlearning (BMVC2024)
 
 This repository contains the implementation of [Erasing Concepts from Text-to-Image Diffusion Models with Few-shot Unlearning](https://arxiv.org/abs/2405.07288).
 
