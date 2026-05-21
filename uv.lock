@@ -4,7 +4,7 @@ requires-python = ">=3.13"
 
 [[package]]
 name = "accelerate"
-version = "0.32.1"
+version = "1.13.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "huggingface-hub" },
@@ -15,9 +15,9 @@ dependencies = [
     { name = "safetensors" },
     { name = "torch" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/e5/67/53e9ffc125c5b828239778e048a0d1ab41171f7b5d6ad040e26e8c5dbb47/accelerate-0.32.1.tar.gz", hash = "sha256:3999acff0237cd0d4f9fd98b42d5a3163544777b53fc4f1eec886b77e992d177", size = 313327, upload-time = "2024-07-04T13:14:52.911Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ca/14/787e5498cd062640f0f3d92ef4ae4063174f76f9afd29d13fc52a319daae/accelerate-1.13.0.tar.gz", hash = "sha256:d631b4e0f5b3de4aff2d7e9e6857d164810dfc3237d54d017f075122d057b236", size = 402835, upload-time = "2026-03-04T19:34:12.359Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/e4/74/564f621699b049b0358f7ad83d7437f8219a5d6efb69bbfcca328b60152f/accelerate-0.32.1-py3-none-any.whl", hash = "sha256:71fcf4be00872194071de561634268b71417d7f5b16b178e2fa76b6f117c52b0", size = 314144, upload-time = "2024-07-04T13:14:50.067Z" },
+    { url = "https://files.pythonhosted.org/packages/7e/46/02ac5e262d4af18054b3e922b2baedbb2a03289ee792162de60a865defc5/accelerate-1.13.0-py3-none-any.whl", hash = "sha256:cf1a3efb96c18f7b152eb0fa7490f3710b19c3f395699358f08decca2b8b62e0", size = 383744, upload-time = "2026-03-04T19:34:10.313Z" },
 ]
 
 [[package]]
@@ -293,15 +293,15 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "accelerate", specifier = "==0.32.1" },
+    { name = "accelerate", specifier = ">=1.13.0" },
     { name = "clean-fid", specifier = "==0.1.35" },
-    { name = "diffusers", specifier = ">=0.21.4" },
+    { name = "diffusers", specifier = ">=0.37.0" },
     { name = "matplotlib", specifier = "==3.10.6" },
     { name = "pandas", specifier = "==2.2.2" },
     { name = "pillow", specifier = ">=12.2.0" },
-    { name = "timm", specifier = "==1.0.8" },
+    { name = "timm", specifier = ">=1.0.27" },
     { name = "tqdm", specifier = "==4.66.3" },
-    { name = "transformers", specifier = "==4.53.0" },
+    { name = "transformers", specifier = "<5" },
 ]
 
 [[package]]
@@ -1180,7 +1180,7 @@ wheels = [
 
 [[package]]
 name = "timm"
-version = "1.0.8"
+version = "1.0.27"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "huggingface-hub" },
@@ -1189,9 +1189,9 @@ dependencies = [
     { name = "torch" },
     { name = "torchvision" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/7d/e0/f9628aab36d199c6ff1bff2d4015e6b2333e8010d6c6eaed8fbfd102fa7f/timm-1.0.8.tar.gz", hash = "sha256:f54a579f1cc39c43d99a4b03603e39c4cee87d4f0a08aba9c22e19064b30bf95", size = 2187799, upload-time = "2024-07-29T05:15:57.831Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/08/54/ece85b0eef3700c90db8271a43669b05a0ebbe2edb1962329c34374a297e/timm-1.0.27.tar.gz", hash = "sha256:315dfe63186ca9fb7ff941268941231fd5be259f2b4bb4afa28560ae1015cb9a", size = 2439861, upload-time = "2026-05-08T19:38:36.844Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/1a/02/f11f8f9178242a694cd99f3a234731d833df77bf01cbb21c0085f021e3d7/timm-1.0.8-py3-none-any.whl", hash = "sha256:2e4cf9e2224616fdb08e5f7a2972bd20e05f750236ea1f8dd53f3f326ceaee83", size = 2309959, upload-time = "2024-07-29T05:15:55.149Z" },
+    { url = "https://files.pythonhosted.org/packages/1f/2e/26bab7686ff4aed48f8f5f6c23e2aa37b7a37ddd9effe3aa61e908fd518f/timm-1.0.27-py3-none-any.whl", hash = "sha256:5ff07c9ddf53cbada88eab1c93ff175c64cab683b5a2fddf863bcee985926f89", size = 2589280, upload-time = "2026-05-08T19:38:35.034Z" },
 ]
 
 [[package]]
