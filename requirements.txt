@@ -1,5 +1,5 @@
 diffusers==0.38.0
-transformers==4.53.0
+transformers==5.13.0
 pillow==12.2.0
 tqdm==4.66.3
 pandas==2.2.2
