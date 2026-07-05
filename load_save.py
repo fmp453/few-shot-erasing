@@ -1,26 +1,26 @@
-import os
 import argparse
+from pathlib import Path
 
 from transformers import CLIPTextModel
 from diffusers import AutoencoderKL, UNet2DConditionModel, StableDiffusionPipeline
 
 
 def text_encoder_save(model_name: str, save_dir: str):
-    os.makedirs(save_dir, exist_ok=True)
+    Path(save_dir).mkdir(exist_ok=True)
     text_encoder = CLIPTextModel.from_pretrained(model_name)
     text_encoder.save_pretrained(f"{save_dir}/text_encoder")
 
     print(f"Saved text encoder model at {save_dir}/text_encoder")
 
 def vae_save(model_name: str, save_dir: str):
-    os.makedirs(save_dir, exist_ok=True)
+    Path(save_dir).mkdir(exist_ok=True)
     vae = AutoencoderKL.from_pretrained(model_name, subfolder="vae")
     vae.save_pretrained(f"{save_dir}/vae")
 
     print(f"Saved VAE model at {save_dir}/vae")
 
 def unet_save(model_name: str, save_dir: str):
-    os.makedirs(save_dir, exist_ok=True)
+    Path(save_dir).mkdir(exist_ok=True)
     unet = UNet2DConditionModel.from_pretrained(model_name, subfolder="unet")
     unet.save_pretrained(f"{save_dir}/unet")
 
@@ -29,7 +29,7 @@ def unet_save(model_name: str, save_dir: str):
 def pipeline_save(model_name: str, save_dir: str):
     pipe = StableDiffusionPipeline.from_pretrained(model_name)
     
-    os.makedirs(save_dir, exist_ok=True)
+    Path(save_dir).mkdir(exist_ok=True)
     # text encoder & tokenizer
     pipe.text_encoder.save_pretrained(f"{save_dir}/text_encoder")
     pipe.tokenizer.save_pretrained(f"{save_dir}/tokenizer")

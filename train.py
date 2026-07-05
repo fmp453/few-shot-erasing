@@ -7,12 +7,14 @@ import gc
 import os
 import time
 import argparse
+from collections import OrderedDict
+
 import torch
 import torch.nn.functional as F
-
+from diffusers import DDIMScheduler
 from torch.utils.data import DataLoader
 from tqdm import trange
-from collections import OrderedDict
+from transformers import CLIPTextModel
 
 from data import AblatingDataset
 
@@ -42,7 +44,7 @@ class Configuration:
         self.tokenizer_version = args["tokenizer_version"]
         self.is_zero_shot = args["is_zero_shot"]
         
-def get_text_embeddings(text_encoder, tokenized_text):
+def get_text_embeddings(text_encoder: CLIPTextModel, tokenized_text: torch.Tensor) -> torch.Tensor:
     # ref: https://github.com/huggingface/diffusers/blob/main/src/diffusers/pipelines/stable_diffusion/pipeline_stable_diffusion.py#L377
 
     device = text_encoder.device
@@ -51,7 +53,7 @@ def get_text_embeddings(text_encoder, tokenized_text):
     text_embedding = text_encoder(tokenized_text.to(device))[0].to(weight_dtype)
     return text_embedding
 
-def get_target_noise(scheduler, noise, latents=None, timesteps=None):
+def get_target_noise(scheduler: DDIMScheduler, noise, latents=None, timesteps=None):
     if scheduler.config.prediction_type == "epsilon":
         target = noise
     elif scheduler.config.prediction_type == "v_prediction":

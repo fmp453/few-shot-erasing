@@ -1,9 +1,10 @@
 import random
+from glob import glob
 
 import torch
-
-from glob import glob
+from diffusers import AutoencoderKL
 from torch.utils.data import Dataset
+from transformers import CLIPTokenizer
 
 import utils
 
@@ -67,9 +68,9 @@ class AblatingDataset(Dataset):
     def __init__(
         self,
         data_root,
-        tokenizer,
+        tokenizer: CLIPTokenizer,
         placeholder_token,
-        vae,
+        vae: AutoencoderKL,
         concept_type:str="object",
         size=512,
         interpolation="bicubic",

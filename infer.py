@@ -1,7 +1,7 @@
-import os
 import random
 import argparse
 import warnings
+from pathlib import Path
 
 import torch
 
@@ -59,7 +59,7 @@ def main(args):
     ).images
     print(seed)
 
-    os.makedirs(args.save_dir, exist_ok=True)
+    Path(args.save_dir).mkdir(exist_ok=True)
 
     for i in range(len(images)):
         images[i].save(f"{args.save_dir}/{seed}-{i:02}.png")

@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from packaging import version
 from pathlib import Path
-from typing import Tuple, Dict, Union
 from torchvision import transforms
 
 from diffusers import (
@@ -31,20 +30,14 @@ clip_versions = {
 
 if version.parse(version.parse(PIL.__version__).base_version) >= version.parse("9.1.0"):
     PIL_INTERPOLATION = {
-        "linear": PIL.Image.Resampling.BILINEAR,
-        "bilinear": PIL.Image.Resampling.BILINEAR,
-        "bicubic": PIL.Image.Resampling.BICUBIC,
-        "lanczos": PIL.Image.Resampling.LANCZOS,
-        "nearest": PIL.Image.Resampling.NEAREST,
+        "linear": Image.Resampling.BILINEAR,
+        "bilinear": Image.Resampling.BILINEAR,
+        "bicubic": Image.Resampling.BICUBIC,
+        "lanczos": Image.Resampling.LANCZOS,
+        "nearest": Image.Resampling.NEAREST,
     }
 else:
-    PIL_INTERPOLATION = {
-        "linear": PIL.Image.LINEAR,
-        "bilinear": PIL.Image.BILINEAR,
-        "bicubic": PIL.Image.BICUBIC,
-        "lanczos": PIL.Image.LANCZOS,
-        "nearest": PIL.Image.NEAREST,
-    }
+    ValueError("Unmatched Pillow version. Required >= 9.1.0")
 
 
 def _load_models(clip_version, stable_diffusion_version):
@@ -92,13 +85,13 @@ def load_models(clip_version, stable_diffusion_version, use_local):
         return _load_models(clip_version, stable_diffusion_version)
 
 def get_optimizer(
-        parameters, 
-        optimizer_name:str, 
-        lr:float, 
-        betas:Tuple[float, float]=(0.9, 0.99), 
-        weight_decay:float=1e-2, 
-        eps:float=1e-6
-    ):
+    parameters, 
+    optimizer_name: str, 
+    lr: float, 
+    betas: tuple[float, float]=(0.9, 0.99), 
+    weight_decay: float=1e-2, 
+    eps: float=1e-6
+):
     optim_name = optimizer_name.lower()
     
     if optim_name == "adamw":
@@ -115,7 +108,7 @@ def get_optimizer(
 
     raise ValueError(f"not match optimizer name : {optimizer_name}")
 
-def plot_loss(history:Dict, save_path:str):
+def plot_loss(history: dict, save_path: str):
     df = pd.DataFrame(history)
     df.to_csv(f"{save_path}/loss.csv", index=False)
     plt.figure()
@@ -124,18 +117,18 @@ def plot_loss(history:Dict, save_path:str):
     plt.close('all')
 
 def preprocess(
-        image_path: Union[Path, str], 
-        center_crop:bool, 
-        size:int, 
-        interpolation:str
-    ) -> torch.Tensor:
+    image_path: Path | str,
+    center_crop: bool, 
+    size: int, 
+    interpolation: str
+) -> torch.Tensor:
     
     flip_transform = transforms.RandomHorizontalFlip(p=0.5)
     interpolation = {
-            "linear": PIL_INTERPOLATION["linear"],
-            "bilinear": PIL_INTERPOLATION["bilinear"],
-            "bicubic": PIL_INTERPOLATION["bicubic"],
-            "lanczos": PIL_INTERPOLATION["lanczos"],
+        "linear": PIL_INTERPOLATION["linear"],
+        "bilinear": PIL_INTERPOLATION["bilinear"],
+        "bicubic": PIL_INTERPOLATION["bicubic"],
+        "lanczos": PIL_INTERPOLATION["lanczos"],
     }[interpolation]
     
     image = Image.open(image_path).convert("RGB")
@@ -156,12 +149,12 @@ def preprocess(
 
     return image
 
-def freeze_and_unfreeze_text_encoder(text_encoder, method="all"):
+def freeze_and_unfreeze_text_encoder(text_encoder: CLIPTextModel, method="all"):
     if method == "all":
         return text_encoder
     
     for param in text_encoder.parameters():
-        param.require_grad = False
+        param.requires_grad = False
     
     mlps = False
     final_attn = False
@@ -181,18 +174,18 @@ def freeze_and_unfreeze_text_encoder(text_encoder, method="all"):
         if mlps and "mlp.fc" in param_name:
             print(param_name)
             for param in module.parameters():
-                param.require_grad = True
+                param.requires_grad = True
         
         if attns and ".self_attn." in param_name:
             print(param_name)
             for param in module.parameters():
-                param.require_grad = True
+                param.requires_grad = True
         
         # for OpenAI CLIP
         if final_attn and "11.self_attn." in param_name:
             print(param_name)
             for param in module.parameters():
-                param.require_grad = True
+                param.requires_grad = True
     
     return text_encoder
 

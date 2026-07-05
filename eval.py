@@ -1,5 +1,3 @@
-
-
 import warnings
 import argparse
 
@@ -52,19 +50,14 @@ class CLIPEvaluator(object):
 
     def get_PIL_images(self, img_path) -> list[Image.Image]:
         images = [Image.open(img_path).convert("RGB")]
-        # for file in glob(f"{img_dir_path}/*"):
-        #     if file.endswith(".png") or file.endswith(".jpg") or file.endswith(".jpeg"):
-        #         im = Image.open(file).convert("RGB")
-        #         images.append(im)
-
         self.num_images = len(images)
         return images
 
-    def tokenize(self, strings: list[str]):
+    def tokenize(self, strings: list[str]) -> torch.Tensor:
         return self.tokenizer(strings, padding=True, return_tensors="pt")
 
     @torch.no_grad()
-    def encode_text(self, tokens):
+    def encode_text(self, tokens: torch.Tensor) -> torch.Tensor:
         # example case
         # {'input_ids': tensor([[49406,   320,  1125,   539,   320,  2368, 49407]]), 'attention_mask': tensor([[1, 1, 1, 1, 1, 1, 1]])}
         tokens = tokens.to(self.model.device)
