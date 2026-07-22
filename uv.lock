@@ -325,7 +325,7 @@ requires-dist = [
     { name = "diffusers", specifier = ">=0.37.0" },
     { name = "matplotlib", specifier = "==3.10.6" },
     { name = "pandas", specifier = "==2.2.2" },
-    { name = "pillow", specifier = ">=12.2.0" },
+    { name = "pillow", specifier = ">=12.3.0" },
     { name = "timm", specifier = ">=1.0.27" },
     { name = "tqdm", specifier = "==4.66.3" },
     { name = "transformers", specifier = ">=5" },
